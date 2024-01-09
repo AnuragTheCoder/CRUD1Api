@@ -28,11 +28,7 @@ app.use(fileUpload({
   useTempFiles:true
 }))
 
-app.use(cors(
-  {
-    origin:'https://crud-app-cyan-chi.vercel.app'
-  }
-));
+app.use(cors());
 
 app.use('/product',productRoute);
 app.use('/user',userRoute);
