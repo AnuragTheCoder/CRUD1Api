@@ -21,15 +21,11 @@ router.post('/signup',(req,res,next)=>{
     {
         const user = new User({
         _id:new mongoose.Types.ObjectId,
-        firtName:req.body.firstName,
-        lastName:req.body.lastName,
+        userName:req.body.userName,
         password:hash,
         email:req.body.email,
         phone:req.body.phone,
-        address:req.body.address,
-        city:req.body.city,
-        state:req.body.state,
-        pin:req.body.pin
+        
       })
 
       user.save()
@@ -52,7 +48,7 @@ router.post('/signup',(req,res,next)=>{
 // user login
 router.post('/login',(req,res,next)=>{
   console.log(req.body);
-  User.find({username:req.body.username})
+  User.find({userName:req.body.userName})
   .exec()
   .then(user=>{
     console.log(user);
@@ -72,7 +68,7 @@ router.post('/login',(req,res,next)=>{
       if(result)
       {
         const token = jwt.sign({
-          username:user[0].username,
+          userName:user[0].userName,
           email:user[0].email,
           phone:user[0].phone,
           userType:user[0].userType
@@ -83,8 +79,7 @@ router.post('/login',(req,res,next)=>{
         }
         );
         res.status(200).json({
-          user:user[0].username,
-          userType:user[0].userType,
+          userName:user[0].userName,
           phone:user[0].phone,
           email:user[0].email,
           token:token

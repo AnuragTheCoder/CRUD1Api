@@ -10,7 +10,7 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 
 
-mongoose.connect('',{useNewUrlParser:true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://anuragjha10122004:helloworld@cluster0.fml40w9.mongodb.net/?retryWrites=true&w=majority',{useNewUrlParser:true, useUnifiedTopology: true});
 
 
 mongoose.connection.on('error',err=>{
@@ -35,7 +35,7 @@ app.use('/user',userRoute);
 app.use('/category',categorypath);
 
 app.get('*',(req,res,next)=>{
-  res.status(200).json({
+  res.status(500).json({
     message:'bad request'
   })
 })
