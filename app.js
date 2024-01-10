@@ -28,12 +28,7 @@ app.use(fileUpload({
   useTempFiles:true
 }))
 
-app.use(cors({
-  origin: '*',
-  methods: '*',
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-}));
+app.use(cors());
 
 app.use('/product',productRoute);
 app.use('/user',userRoute);
